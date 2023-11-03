@@ -52,6 +52,11 @@ Units:
 
 After submission of your project it will be tested for a different day of recorded sensor readings. Please set up your project so that it can ingest a new `sensor_readings.csv` file with the same format as the one provided to you here.
 
+The Scoring will be as follows:
+- 40% detection - We want you to identify true positives and true negatives while not getting false negatives and false positives. Please refer to the [Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix) for more info. 
+- 40% identifying the location of the leak
+- 20% UI
+
 For the interface for a live leak detection diagram you should use a map API, such as the one [provided by Google](https://developers.google.com/maps/apis-by-platform).
 
 ## Bonus
