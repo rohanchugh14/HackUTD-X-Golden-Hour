@@ -21,11 +21,15 @@ The specific facility you will be working with is shown here:
 
 [Here is a link](https://www.google.com/maps/place/40%C2%B035%2746.0%22N+105%C2%B008%2724.3%22W/@40.5955073,-105.1399915,163m/data=!3m1!1e3!4m4!3m3!8m2!3d40.596114!4d-105.140075?entry=ttu) to the facility in Google Maps
 
+Here is an example of a leak:
+![](leak.png)
+
+
 ## Files
 
 ```sensor_readings.csv```
 
-This file gives the methane concentration readings for the 24 sensors at the facility. The unit of the concentration values is not important. Work with your team to determine thresholds for alarming concentration levels. You might want to consider anomaly detection as an approach. Every sensor has a unique key that gives a latitude and longitude within the key.
+This file gives the methane concentration readings for the 24 sensors at the facility. The unit of the concentration values is not important. Work with your team to determine thresholds for alarming concentration levels. Please note the sensors are effected by temperature and humidity. You might want to consider anomaly detection as an approach. Every sensor has a unique key that gives a latitude and longitude within the key.
 
 ---
 
@@ -52,12 +56,34 @@ Units:
 
 After submission of your project it will be tested for a different day of recorded sensor readings. Please set up your project so that it can ingest a new `sensor_readings.csv` file with the same format as the one provided to you here.
 
+Please create an output file in the following format with the detected leaks. Location can have one or more leak locations. If there is more than one please use `|` to separate them:
+
+time, location  \
+1699028053, 4W|5T  \
+1699028153, 5S  
+
+If you can't determine the location put None in the location column:
+
+1699028053, None \
+1699028153, None
+
+Name your file with your team name with no spaces or special character.
+
+
 The Scoring will be as follows:
 - 40% detection - We want you to identify true positives and true negatives while not getting false negatives and false positives. Please refer to the [Confusion Matrix](https://en.wikipedia.org/wiki/Confusion_matrix) for more info. 
 - 40% identifying the location of the leak
 - 20% UI
 
 For the interface for a live leak detection diagram you should use a map API, such as the one [provided by Google](https://developers.google.com/maps/apis-by-platform).
+
+## References 
+
+[Isolation forest](https://en.wikipedia.org/wiki/Isolation_forest) \
+
+[Anomoly Detection](https://pyod.readthedocs.io/) \
+
+[Methane](https://en.wikipedia.org/wiki/Methane)
 
 ## Bonus
 
