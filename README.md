@@ -5,7 +5,7 @@
 
 Continuous monitoring at oil and gas production facilities enables the detection of unintended methane leaks from equipment, and a swift response to minimize the impact. These operations are supported by sophisticated sensor networks and data analysis.
 
-Here, your hackathon journey takes you to a single production facility that is equipped with stationary methane and weather sensors. Develop a solution that utilizes the trends in the sensor data, and wind direction and speed to identify the locations of methane leaks that occurred during a 2-hour timeframe.
+Here, your hackathon journey takes you to a single production facility that is equipped with stationary methane and weather sensors. Develop a solution that utilizes the trends in the sensor data, and wind direction and speed to identify if there is a leak and if so the locations of the methane leaks that occurred during a 24-hour timeframe. The locations of the leak points are in the image below and are labeled 4W,4S,5T,5W,5S.
 
 Work together to build a user interface (e.g., web app, mobile app, dashboard) that provides an intuitive and informative way for facility operators to understand the severity and extent of the detected leaks.
 
