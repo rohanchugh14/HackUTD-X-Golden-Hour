@@ -11,6 +11,9 @@ Work together to build a user interface (e.g., web app, mobile app, dashboard) t
 
 A prize will be awarded to the 2 best teams for this category, please come and see the EOG Resources team for more details.
 
+Access the project github with this QR code: ![](<img width="456" alt="Screen Shot 2023-11-04 at 8 00 25 AM" src="https://github.com/nihaal419/HackUTD-X-Golden-Hour/assets/52965115/078509c9-5aa3-4592-af08-1c05eb5cd9b2">)
+
+
 ## Resources
 
 Use this repo to pull the available data for your project. You are given leak events from a 24 hour window to help build your detection algorithm. All provided documents are csv files and any date/time data is in UTC.
