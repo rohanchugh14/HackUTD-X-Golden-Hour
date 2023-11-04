@@ -84,9 +84,9 @@ For the interface for a live leak detection diagram you should use a map API, su
 
 ## References 
 
-[Isolation forest](https://en.wikipedia.org/wiki/Isolation_forest) \
+[Isolation forest](https://en.wikipedia.org/wiki/Isolation_forest)
 
-[Anomoly Detection](https://pyod.readthedocs.io/) \
+[Anomoly Detection](https://pyod.readthedocs.io/)
 
 [Methane](https://en.wikipedia.org/wiki/Methane)
 
