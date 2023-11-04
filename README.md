@@ -63,13 +63,13 @@ After submission of your project it will be tested for a different day of record
 
 Please create an output file in the following format with the detected leaks. Location can have one or more leak locations. If there is more than one please use `|` to separate them:
 
-time, location  \
-1699028053, 4W|5T  \
+time, location
+1699028053, 4W|4T
 1699028153, 5S  
 
 If you can't determine the location put None in the location column:
 
-1699028053, None \
+1699028053, None
 1699028153, None
 
 Name your file with your team name with no spaces or special character.
