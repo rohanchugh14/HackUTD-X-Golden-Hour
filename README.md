@@ -11,7 +11,7 @@ Work together to build a user interface (e.g., web app, mobile app, dashboard) t
 
 A prize will be awarded to the 2 best teams for this category, please come and see the EOG Resources team for more details.
 
-Access the project github with this QR code: ![](QR_CODE.png =250x)
+Access the project github with this QR code: <img src="QR_CODE.png" alt="drawing" width="100"/>
 
 
 ## Resources
