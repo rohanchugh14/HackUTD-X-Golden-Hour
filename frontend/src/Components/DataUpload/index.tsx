@@ -5,6 +5,7 @@ import { Button, Stack, Input, Select } from "@chakra-ui/react";
 const DataUpload = () => {
   const [weatherFile, setWeatherFile] = React.useState<File | null>(null); 
   const [sensorFile, setSensorFile] = React.useState<File | null>(null);
+  const [loading, setLoading] = React.useState(false);
   const handleWeatherUpload: React.ChangeEventHandler<HTMLInputElement> = (event)  => {
     // handle weather upload
     if (!event.target.files || event.target.files.length === 0) {
@@ -26,6 +27,7 @@ const DataUpload = () => {
     const formData = new FormData()
     formData.append('weather', weatherFile as Blob)
     formData.append('sensor', sensorFile as Blob)
+    setLoading(true)
     const res = await fetch('https://api.eogmethanedetection.us:3001/upload', {
       method: 'POST',
       body: formData
@@ -48,6 +50,7 @@ const DataUpload = () => {
     // Clean up by revoking the object URL and removing the link
     window.URL.revokeObjectURL(url);
     document.body.removeChild(a);
+    setLoading(false)
     // console.log(data.output)
     // handle submit
   };
@@ -129,6 +132,8 @@ const DataUpload = () => {
           py={12}
           width="100%"
           filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));"
+          isLoading={loading}
+          isDisabled={loading}
         >
           SUBMIT
         </Button>
