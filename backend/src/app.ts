@@ -3,7 +3,8 @@ import cors from 'cors';
 import multer from 'multer';
 import { spawn } from 'child_process';
 import fs from 'fs';
-
+import https from 'https'
+import path from 'path';
 
 
 const dir = './uploads';
@@ -12,9 +13,20 @@ if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
 
+const privateKeyPath = '/etc/letsencrypt/live/api.eogmethanedetection.us/privkey.pem';
+const certificatePath = '/etc/letsencrypt/live/api.eogmethanedetection.us/cert.pem';
+const caBundlePath = '/etc/letsencrypt/live/api.eogmethanedetection.us/chain.pem';
+
+
+const sslOptions = {
+  key: fs.readFileSync('/home/rohanchugh14/sslcert/privkey.pem'),
+  cert: fs.readFileSync('/home/rohanchugh14/sslcert/fullchain.pem')
+};
+
 
 const app = express();
 app.use(cors());
+const httpsServer = https.createServer(sslOptions, app);
 // add cors middleware
 const port = 3001;
 
@@ -78,6 +90,6 @@ app.post('/api/upload', upload.fields([
 });
 
 // Start the server
-app.listen(port, '0.0.0.0', () => {
+httpsServer.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
