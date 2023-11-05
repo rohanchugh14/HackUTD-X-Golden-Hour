@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Button, Stack, Input } from "@chakra-ui/react";
-import { set } from "react-hook-form";
 
 const DataUpload = () => {
   const [weatherFile, setWeatherFile] = React.useState<File | null>(null); 
