@@ -200,8 +200,4 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "DATA ANALYSIS",
     href: "/data-analysis",
   },
-  {
-    label: "PAST LEAKS",
-    href: "/past-leaks",
-  },
 ];
