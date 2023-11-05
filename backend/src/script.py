@@ -18,7 +18,9 @@ def print_file_info(file_path):
     print(f'Rows: {rows}')
 
 def delete_file(file_path):
-    pass
+    # Delete the file
+    os.remove(file_path)
+    print(f'Deleted: {file_path}')
 
 if __name__ == '__main__':
     if len(sys.argv) == 3:
