@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Button, Stack, Input, Select } from "@chakra-ui/react";
+import { Button, Stack, Input } from "@chakra-ui/react";
 
 const DataUpload = () => {
   const [weatherFile, setWeatherFile] = React.useState<File | null>(null); 
@@ -113,12 +113,6 @@ const DataUpload = () => {
         >
           Upload Sensor CSV
         </Button>
-        {/* create a dropdown select */}
-        <Select placeholder='Choose model'>
-          <option value="model1">Model 1</option>
-          <option value="model2">Model 2</option>
-          <option value="model3">Model 3</option>
-        </Select>
         <Button
           type="submit"
           onClick={handleSubmit}
