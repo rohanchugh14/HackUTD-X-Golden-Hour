@@ -49,7 +49,7 @@ app.post('/upload', upload.fields([
 
     // Call your Python script here
     const pythonScriptPath = './src/script.py';
-    const pythonProcess = spawn('python', [pythonScriptPath, file1, file2]);
+    const pythonProcess = spawn('python3', [pythonScriptPath, file1, file2]);
     let output = ""
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);

@@ -17,9 +17,15 @@ def print_file_info(file_path):
     print(f'Size: {size} bytes')
     print(f'Rows: {rows}')
 
+def delete_file(file_path):
+    pass
+
 if __name__ == '__main__':
     if len(sys.argv) == 3:
+        print("made it into here")
         print_file_info(sys.argv[1])
         print_file_info(sys.argv[2])
+        delete_file(sys.argv[1])
+        delete_file(sys.argv[2])
     else:
         print("Error: script.py requires exactly two arguments (paths to CSV files).")
