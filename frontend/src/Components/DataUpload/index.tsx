@@ -37,7 +37,7 @@ const DataUpload = () => {
     
     // Set the download attribute with a filename
     a.href = url;
-    a.download = 'results.txt'; // The filename you want to save as.
+    a.download = 'leak_intervals.txt'; // The filename you want to save as.
     
     // Append the link to the body
     document.body.appendChild(a);
