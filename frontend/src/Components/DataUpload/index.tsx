@@ -26,7 +26,7 @@ const DataUpload = () => {
     const formData = new FormData()
     formData.append('weather', weatherFile as Blob)
     formData.append('sensor', sensorFile as Blob)
-    const res = await fetch('http://localhost:3001/upload', {
+    const res = await fetch('/api/upload', {
       method: 'POST',
       body: formData
     })

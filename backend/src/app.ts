@@ -2,6 +2,16 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import multer from 'multer';
 import { spawn } from 'child_process';
+import fs from 'fs';
+
+
+
+const dir = './uploads';
+
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+}
+
 
 const app = express();
 app.use(cors());
@@ -24,7 +34,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Define the endpoint
-app.post('/upload', upload.fields([
+app.post('/api/upload', upload.fields([
   { name: 'weather', maxCount: 1 },
   { name: 'sensor', maxCount: 1 }
 ]), async (req: any, res: Response) => {
@@ -39,7 +49,7 @@ app.post('/upload', upload.fields([
 
     // Call your Python script here
     const pythonScriptPath = './src/script.py';
-    const pythonProcess = spawn('python', [pythonScriptPath, file1, file2]);
+    const pythonProcess = spawn('python3', [pythonScriptPath, file1, file2]);
     let output = ""
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -68,6 +78,6 @@ app.post('/upload', upload.fields([
 });
 
 // Start the server
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
