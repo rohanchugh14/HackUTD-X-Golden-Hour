@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Define the endpoint
-app.post('/upload', upload.fields([
+app.post('/api/upload', upload.fields([
   { name: 'weather', maxCount: 1 },
   { name: 'sensor', maxCount: 1 }
 ]), async (req: any, res: Response) => {
