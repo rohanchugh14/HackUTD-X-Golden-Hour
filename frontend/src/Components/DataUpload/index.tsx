@@ -31,8 +31,24 @@ const DataUpload = () => {
       body: formData
     })
     console.log(res)
-    const data = await res.json()
-    console.log(data.output)
+    const data = await res.blob()
+    const url = window.URL.createObjectURL(data)
+    const a = document.createElement('a');
+    
+    // Set the download attribute with a filename
+    a.href = url;
+    a.download = 'results.txt'; // The filename you want to save as.
+    
+    // Append the link to the body
+    document.body.appendChild(a);
+    
+    // Trigger the download
+    a.click();
+    
+    // Clean up by revoking the object URL and removing the link
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
+    // console.log(data.output)
     // handle submit
   };
 
