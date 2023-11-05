@@ -51,9 +51,6 @@ app.post('/upload', upload.fields([
   { name: 'sensor', maxCount: 1 }
 ]), async (req: any, res: Response) => {
   
-    console.log(req);
-    console.log(req.files);
-    console.log("made it here")
 
     // Assuming files are named 'file1.csv' and 'file2.csv'
     const file1 = req.files.weather[0].path;
