@@ -1,4 +1,4 @@
-import { Image, Stack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 
 const Home = () => {
   return (
