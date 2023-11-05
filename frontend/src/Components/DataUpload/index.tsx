@@ -1,19 +1,39 @@
 import React from "react";
 
 import { Button, Stack, Input } from "@chakra-ui/react";
+import { set } from "react-hook-form";
 
 const DataUpload = () => {
+  const [weatherFile, setWeatherFile] = React.useState<File | null>(null); 
+  const [sensorFile, setSensorFile] = React.useState<File | null>(null);
   const handleWeatherUpload: React.ChangeEventHandler<HTMLInputElement> = (event)  => {
     // handle weather upload
-    console.log(event.target.files)
+    if (!event.target.files || event.target.files.length === 0) {
+      return
+    }
+    setWeatherFile(event.target.files[0])
   };
 
   const handleSensorUpload: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     // handle sensor upload
-    console.log(event.target.files)
+    if (!event.target.files || event.target.files.length === 0) {
+      return
+    }
+    setSensorFile(event.target.files[0])
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // make fetch request with two files as multipart form data to localhost:3001/upload
+    const formData = new FormData()
+    formData.append('weather', weatherFile as Blob)
+    formData.append('sensor', sensorFile as Blob)
+    const res = await fetch('http://localhost:3001/upload', {
+      method: 'POST',
+      body: formData
+    })
+    console.log(res)
+    const data = await res.json()
+    console.log(data.output)
     // handle submit
   };
 
