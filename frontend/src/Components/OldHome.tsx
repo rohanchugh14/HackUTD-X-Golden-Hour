@@ -10,7 +10,7 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const Home = () => {
+const OldHome = () => {
   const [file, setFile] = useState<File | null>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,4 +47,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default OldHome;
