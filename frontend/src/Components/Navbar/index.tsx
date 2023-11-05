@@ -85,14 +85,13 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Box
                 as="a"
-                padding={"5px 10px"}
+                padding={"10px 10px"}
                 href={navItem.href ?? "#"}
                 fontSize={"18px"}
                 fontFamily={"Inter"}
                 fontWeight={700}
                 color={linkColor}
                 transition="color 0.4s, border-color 0.4s"
-                // borderBottom={location.pathname === navItem.href ? "4px solid #60AF63" : "4px solid transparent"}
                 bg={
                   location.pathname === navItem.href
                     ? "#A5BE9A"
