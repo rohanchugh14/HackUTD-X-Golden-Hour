@@ -4,7 +4,6 @@ import Navbar from "./Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DataUpload from "./DataUpload";
 import DataAnalysis from "./DataAnalysis";
-import PastLeaks from "./PastLeaks";
 export const App = () => (
   <ChakraProvider theme={theme}>
     <BrowserRouter>
@@ -13,7 +12,6 @@ export const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/data-upload" element={<DataUpload />} />
         <Route path="/data-analysis" element={<DataAnalysis />} />
-        <Route path="/past-leaks" element={<PastLeaks />} />
       </Routes>
     </BrowserRouter>
   </ChakraProvider>

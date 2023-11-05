@@ -4,7 +4,7 @@ import multer from 'multer';
 import { spawn } from 'child_process';
 import fs from 'fs';
 import https from 'https'
-import path from 'path';
+import {v4 as uuidv4} from 'uuid'
 
 
 const dir = './uploads';
@@ -12,10 +12,6 @@ const dir = './uploads';
 if (!fs.existsSync(dir)) {
   fs.mkdirSync(dir);
 }
-
-const privateKeyPath = '/etc/letsencrypt/live/api.eogmethanedetection.us/privkey.pem';
-const certificatePath = '/etc/letsencrypt/live/api.eogmethanedetection.us/cert.pem';
-const caBundlePath = '/etc/letsencrypt/live/api.eogmethanedetection.us/chain.pem';
 
 
 const sslOptions = {
@@ -25,6 +21,7 @@ const sslOptions = {
 
 
 const app = express();
+const jobs = new Map();
 app.use(cors());
 const httpsServer = https.createServer(sslOptions, app);
 // add cors middleware
@@ -55,7 +52,7 @@ app.post('/upload', upload.fields([
     // Assuming files are named 'file1.csv' and 'file2.csv'
     const file1 = req.files.weather[0].path;
     const file2 = req.files.sensor[0].path;
-
+    const jobID = file1.filename; 
     // Call your Python script here
     const pythonScriptPath = './src/script.py';
     const pythonProcess = spawn('python3', [pythonScriptPath, file1, file2]);
