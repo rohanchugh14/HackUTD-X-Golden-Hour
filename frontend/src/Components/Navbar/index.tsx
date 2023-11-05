@@ -48,7 +48,7 @@ export default function Navbar() {
         <Flex flex={{ base: 1 }} justify={"space-between"}>
           <Link to="/">
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Logo"
               boxSize="100px"
               objectFit="contain"
@@ -69,7 +69,7 @@ export default function Navbar() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("black", "white");
+  const linkColor = useColorModeValue("#4F4747", "white");
   const linkHoverColor = useColorModeValue("white", "black");
   const location = useLocation();
   return (
@@ -85,20 +85,24 @@ const DesktopNav = () => {
             <PopoverTrigger>
               <Box
                 as="a"
-                p={2}
+                padding={"5px 10px"}
                 href={navItem.href ?? "#"}
                 fontSize={"18px"}
                 fontFamily={"Inter"}
-                fontWeight={400}
+                fontWeight={700}
                 color={linkColor}
                 transition="color 0.4s, border-color 0.4s"
-                borderBottom={location.pathname === navItem.href ? "4px solid #60AF63" : "4px solid transparent"}
+                // borderBottom={location.pathname === navItem.href ? "4px solid #60AF63" : "4px solid transparent"}
+                bg={
+                  location.pathname === navItem.href
+                    ? "#A5BE9A"
+                    : "transparent"
+                }
+                rounded="full"
                 _hover={{
                   borderBottomColor: "#60AF63",
                   color: linkHoverColor,
                 }}
-                pb={1}
-                textShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
               >
                 {navItem.label}
               </Box>
@@ -186,19 +190,19 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "Home",
+    label: "HOME",
     href: "/",
   },
   {
-    label: "Data Upload",
+    label: "DATA UPLOAD",
     href: "/data-upload",
   },
   {
-    label: "Data Analysis",
+    label: "DATA ANALYSIS",
     href: "/data-analysis",
   },
   {
-    label: "Past Leaks",
+    label: "PAST LEAKS",
     href: "/past-leaks",
   },
 ];
