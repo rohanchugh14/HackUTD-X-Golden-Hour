@@ -2,6 +2,16 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import multer from 'multer';
 import { spawn } from 'child_process';
+import fs from 'fs';
+
+
+
+const dir = './uploads';
+
+if (!fs.existsSync(dir)) {
+  fs.mkdirSync(dir);
+}
+
 
 const app = express();
 app.use(cors());
