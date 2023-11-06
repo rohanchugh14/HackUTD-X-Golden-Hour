@@ -4,7 +4,6 @@ import multer from 'multer';
 import { spawn } from 'child_process';
 import fs from 'fs';
 import https from 'https'
-import {v4 as uuidv4} from 'uuid'
 
 
 const dir = './uploads';
@@ -50,12 +49,12 @@ app.post('/upload', upload.fields([
   
 
     // Assuming files are named 'file1.csv' and 'file2.csv'
-    const file1 = req.files.weather[0].path;
-    const file2 = req.files.sensor[0].path;
-    const jobID = file1.filename; 
+    const file1 = req.files.sensor[0].path;
+    const file2 = req.files.weather[0].path;
+    // const jobID = file2.filename; 
     // Call your Python script here
     const pythonScriptPath = './src/script.py';
-    const pythonProcess = spawn('python3', [pythonScriptPath, file1, file2]);
+    const pythonProcess = spawn('python3', [pythonScriptPath, file1, file2, "./src/random_forest_detection_model.sav"]);
     let output = ""
     pythonProcess.stdout.on('data', (data) => {
       console.log(`stdout: ${data}`);
@@ -75,7 +74,21 @@ app.post('/upload', upload.fields([
       if (code === 0) {
         // Send the output to the client here
         // add output to res
-        res.send({output})
+        // read in the file in the same filepath + _leaks.txt
+        // add that to res
+        
+        const file = fs.readFileSync(file1 + "_leaks.txt", 'utf8')
+        // res.send({output, file})
+        res.download(file1 + "_leaks.txt", "results.txt", (err) => {
+          if (err) {
+            console.log(err)
+            res.status(500).send({
+              message: "Could not download the file. " + err,
+            });
+          }
+        })
+
+        // res.send({output})
         // res.send('Files processed successfully.');
       } else {
         res.status(500).send('An error occurred while processing files.');
